@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome - Web Experience Toolkit v5</title>
-    <link rel="stylesheet" href="../theme/css/style.css">
+    <!--<link rel="stylesheet" href="../theme/css/style.css">-->
     
 </head>
 <body>
@@ -14,15 +14,47 @@
     <wb-carousel v="5">
         FIRST
     </wb-carousel>
-     <wb-carousel v="5">
+    
+	<wb-carousel v="5">
         SECOND
     </wb-carousel>
-     <wb-carousel v="5">
+    <!--<wb-carousel v="5">
         THIRD
-    </wb-carousel>
+    </wb-carousel>-->
     <!-- 
         Scripts
     -->
+	
+	
+	<script>
+	
+	var realCustomDefine = customElements.define;
+	
+	var myProto = {
+		logme: function(){
+			
+			console.log( "I am logging from proto" );
+		
+		},
+		getTemplate: function(){
+			// Take the inner HTML
+			
+			console.log( this );
+			console.log( this.innerHTML );
+		
+		}
+	
+	};
+	
+	
+	customElements.define = function( name, elm ) {
+	
+		console.log( "custom Define is overwritted");
+		realCustomDefine.apply( this, arguments );
+	}
+	
+	
+	</script>
     <script src="../src/vendor/requirejs/2.3.6/require.js" data-main="../src/wet-boew.js"></script>
 </body>
 </html>

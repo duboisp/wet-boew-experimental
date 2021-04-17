@@ -25,10 +25,14 @@ require(['i18n!nls/dctnry', 'lib/dom/stylesheet'], function( i8n, Stylesheet  ) 
             event.animationName === "nodeInserted" &&
             event.target.tagName.startsWith("WB-")
         ) {
+			console.log( "I am called");
+			console.log( event.target );
             let node = Object.assign( event.target, { i18n: i8n} ),
                 tagName = node.tagName.toLowerCase();
             require( [ "plugin/" + tagName + "/" + tagName ], function( element ) {
 
+				console.log( "Plugin Class loaded" );
+			
                 // Call the init() function when defined (like in wb-xtemplate)
                 // # wb-carousel.js use the global object customElements.define as per the living standard. So it don't need this init call.
                 if ( element && element.init ) {

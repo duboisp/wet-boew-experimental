@@ -8,20 +8,34 @@
 define( [ ], function( ) {
 	"use strict";
 	
+	console.log( "MODULE Class loaded" );
+	
+	// Shared between all instances 
+	var local = 3;
+	
+	// One instance of this class exist per element
 	class Carousel extends HTMLElement {
 
+		
 		constructor() {
 			// Always call super first in constructor
 			super();
 
+			// Add wb plugins utilities
+			//Object.setPrototypeOf( this, myProto );
+
 			console.log( "[ i18n ] -> " + this.i18n.greeting );
-
+			//if ( !this.local ) {
+			//	this.local = 0;
+			//}
+			//console.log( local );
+			//console.log( this.local );
+			//local ++;
+			//this.local ++;
 		}
-
 
 		connectedCallback() {
 			console.log('Custom element added to page.');
-
 		}
 
 		disconnectedCallback() {
@@ -35,6 +49,7 @@ define( [ ], function( ) {
 		attributeChangedCallback(name, oldValue, newValue) {
 			console.log('Custom element attributes changed.');
 		}
+		
 	}
 
 	customElements.define("wb-carousel", Carousel);
